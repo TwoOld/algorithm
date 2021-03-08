@@ -19,7 +19,7 @@ function DynamicArray(capacity) {
     }
 
     function indexOf(element) {
-        for (let i = 0; i < array.length; i++) {
+        for (let i = 0; i < elements.length; i++) {
             if (elements[i] === element) {
                 return i
             }
@@ -50,7 +50,7 @@ function DynamicArray(capacity) {
     }
 
     function clear() {
-        for (let i = 0; i < array.length; i++) {
+        for (let i = 0; i < elements.length; i++) {
             elements[i] = undefined
         }
         size = 0
