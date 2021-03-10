@@ -1,8 +1,7 @@
 // BFPRT - 线性时间选择
 
 function swap(A, i, j) {
-  if (i == j)
-    return;
+  if (i == j) return;
   const temp = A[i];
   A[i] = A[j];
   A[j] = temp;
@@ -65,36 +64,64 @@ function partition(A, left, right, pivotIndex, k) {
   }
   // 将主元换回正确位置
   swap(A, right, storeIndexEq);
-  if (k - 1 < storeIndex) {
-    return storeIndex;
-  }
-  if (k - 1 <= storeIndexEq) {
-    return k - 1;
-  }
+  // if (k - 1 < storeIndex) {
+  //   return storeIndex;
+  // }
+  // if (k - 1 <= storeIndexEq) {
+  //   return k - 1;
+  // }
   return storeIndexEq;
 }
 
 // 线性时间的 Select-K
 function select(A, left, right, k) {
-  const n = A.length
+  const n = A.length;
   while (left < right) {
-    // let pivotIndex = medianOfMedians(A, left, right);
-    let pivotIndex = Math.floor(Math.random() * (right - left + 1)) + left
+    let pivotIndex = medianOfMedians(A, left, right);
+    // let pivotIndex = Math.floor(Math.random() * (right - left + 1)) + left;
     pivotIndex = partition(A, left, right, pivotIndex, k);
-    if (pivotIndex == n - k) {
-      return pivotIndex;
-    } else if (n - k < pivotIndex) {
-      right = pivotIndex - 1;
-    } else {
-      left = pivotIndex + 1;
-    }
+    // if (pivotIndex == n - k) {
+    //   return pivotIndex;
+    // } else if (n - k < pivotIndex) {
+    //   right = pivotIndex - 1;
+    // } else {
+    //   left = pivotIndex + 1;
+    // }
   }
   return left;
 }
 
 // 1 - 25 乱序
-const A = [1, 14, 4, 18, 25, 6, 17, 9, 3, 5, 10, 16, 12, 23, 19, 13, 20, 8, 15, 24, 7, 21, 22, 2, 11];
-for (let i = 1; i <= 25; i++) {
-  // 第 i 小元素为 i
-  console.log(A[select(A, 0, A.length - 1, i)]);
-}
+const A = [
+  1,
+  14,
+  4,
+  18,
+  25,
+  6,
+  17,
+  9,
+  3,
+  5,
+  10,
+  16,
+  12,
+  23,
+  19,
+  13,
+  20,
+  8,
+  15,
+  24,
+  7,
+  21,
+  22,
+  2,
+  11,
+];
+// for (let i = 1; i <= 25; i++) {
+//   // 第 i 小元素为 i
+//   console.log(select(A, 0, A.length - 1, i));
+// }
+select(A, 0, A.length - 1);
+console.log(A);
