@@ -42,4 +42,4 @@ function quickSort(arr) {
   return arr;
 }
 
-console.log(quickSort([8, 4, 90, 8, 34, 67, 1, 26, 17]));
+console.log(quickSort([8, 4, 90, 8, 34, 67, 1, 8, 26, 17]));
